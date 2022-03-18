@@ -1,6 +1,13 @@
 import type { NextPage } from "next";
+import { ChangeEvent, useCallback, useState } from "react";
 
 const Home: NextPage = () => {
+  const [search, setSearch] = useState<string>();
+
+  const updateSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  }, []);
+
   return (
     <div className="p-4 h-full">
       <div className="h-32" />
@@ -11,8 +18,11 @@ const Home: NextPage = () => {
           <input
             className="w-full bg-contrast rounded-xl p-4"
             placeholder="Rechercher un profil"
+            value={search}
+            onChange={updateSearch}
           />
         </div>
+        {search}
       </div>
     </div>
   );
