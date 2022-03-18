@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .bg-contrast {
+    @apply bg-black bg-opacity-10;
+  }
+}

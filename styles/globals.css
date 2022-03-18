@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import "test.css"; */
+@import "background.css";
 
 html,
 body,
 #__next {
   height: 100%;
+}
+
+button,
+input {
+  outline: none;
 }
