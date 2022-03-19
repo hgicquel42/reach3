@@ -6,7 +6,7 @@ import { Fragment } from "react";
 // TODO :: cacher logo linkedin et github sur page classement
 
 const logins = [
-	"hgicquel",
+	"Coming soon",
 ]
 
 interface Profile {
