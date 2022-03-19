@@ -5,7 +5,6 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import logo from "../public/assets/fusee.png"
 import '../styles/globals.css'
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   const [search, setSearch] = useState<string>()
 
