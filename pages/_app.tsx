@@ -13,19 +13,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
 		<div className="p-4 h-full">
 			<div className="h-32" />
-			<div className="w-full max-w-xl m-auto">
+			<header className="w-full max-w-xl m-auto">
 				<h1 className="text-8xl m-auto font-bold">
 					Cursus3.io
 				</h1>
-
-				<nav className="flex items-center justify-between flex-wrap bg-blue-800 p-6">
-					<div className="flex items-center flex-shrink-0 text-white mr-6">
-						{/* <Image src={logo} width="100" height="50" /> */}
-
-						<span className="font-semibold text-xl tracking-tight">
-							Chad3.io
-						</span>
-					</div>
+				<nav className="flex items-center justify-between flex-wrap bg-blue-800 p-6 rounded-xl">
 					<div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
 						<div className="text-sm lg:flex-grow">
 							<a
@@ -48,15 +40,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 						</div>
 					</div>
 				</nav>
-
 				<div className="my-2" />
-				<div className="w-full">
+				<nav className="w-full">
 					<input className="w-full bg-contrast rounded-xl p-4"
 						placeholder="Rechercher un profil"
 						value={search}
 						onChange={updateSearch}	/>
-				</div>
-			</div>
+				</nav>
+			</header>
 			<Fetch42Provider>
       	<Component {...pageProps} />
 			</Fetch42Provider>
