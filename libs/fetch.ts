@@ -9,7 +9,7 @@ export async function jsonfetch(url: string, options?: RequestInit) {
 	if (text) return JSON.parse(text)
 }
 
-export async function fetch42(path: string, token: string) {
+export async function tfetch42(path: string, token: string) {
 	const base = "https://api.intra.42.fr"
 	return await jsonfetch(`/api/decors?url=${base + path}`, {
 		headers: { Authorization: `Bearer ${token}` }

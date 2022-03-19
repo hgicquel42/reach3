@@ -6,19 +6,14 @@ const API_UID =
 const API_SECRET =
 	"6967697a927fb6b29a658c321458b657d6dbd7e27012f7b670a7453e3e19a37d"
 
-export interface TokenRes {
-	access_token: string
-}
-
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
 	const url = "https://api.intra.42.fr/oauth/token"
 	const body = `grant_type=client_credentials&client_id=${API_UID}&client_secret=${API_SECRET}`
-	const res2 = await fetch(url, { method: "POST", body })
+	const headers = { "Content-Type": "application/x-www-form-urlencoded" }
+	const res2 = await fetch(url, { method: "POST", body, headers })
 
-	console.log(await res2.text())
-	// const tokenres = (await res2.json()) as TokenRes
-	// res.status(res2.status).json(tokenres.access_token)
+	res.status(res2.status).json(await res2.json())
 }
