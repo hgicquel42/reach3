@@ -1,3 +1,6 @@
+import { useCallback } from "react"
+import { useGET } from "./react/fetch"
+
 async function httperr(res: Response) {
 	return Error(`${res.status} ${await res.text()}`)
 }
@@ -9,9 +12,19 @@ export async function jsonfetch(url: string, options?: RequestInit) {
 	if (text) return JSON.parse(text)
 }
 
-export async function tfetch42(path: string, token: string) {
-	const base = "https://api.intra.42.fr"
-	return await jsonfetch(`/api/decors?url=${base + path}`, {
-		headers: { Authorization: `Bearer ${token}` }
-	})
+export function use42Token() {
+	const res = useGET<{
+    access_token?: string
+  }>("/api/token", jsonfetch)
+	return res?.access_token
+}
+
+export function use42(token?: string) {
+	return useCallback(async (path: string) => {
+    if (!token) return
+    const corsurl = `https://api.intra.42.fr${path}`
+    const trueurl = `/api/decors?url=${corsurl}`
+    const headers = { Authorization: `Bearer ${token}` }
+		return	await jsonfetch(trueurl, { headers})
+	}, [token])
 }

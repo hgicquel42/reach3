@@ -1,22 +1,7 @@
 import type { NextPage } from "next"
 import { ChangeEvent, useCallback, useState } from "react"
-import { jsonfetch, tfetch42 } from "../libs/fetch"
+import { use42, use42Token } from "../libs/fetch"
 import { useGET } from "../libs/react/fetch"
-
-export interface TokenRes {
-	access_token: string
-}
-
-function useToken() {
-	const res = useGET<TokenRes>("/api/token", jsonfetch)
-	return res?.access_token
-}
-
-function use42(token?: string) {
-	return useCallback(async (url: string) => {
-		if (token) return	await tfetch42(url, token)
-	}, [token])
-}
 
 const Home: NextPage = () => {
 	const [search, setSearch] = useState<string>()
@@ -25,7 +10,7 @@ const Home: NextPage = () => {
 		setSearch(e.target.value)
 	}, [])
 
-	const token = useToken()
+	const token = use42Token()
 	const fetch42 = use42(token)
 
 	const apps = useGET("/v2/apps", fetch42)
