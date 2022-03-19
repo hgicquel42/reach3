@@ -1,29 +1,59 @@
-import { use42 } from "libs/fetch"
+import { avatars } from "libs/avatars";
+import { use42 } from "libs/fetch";
+import Link from "next/link";
+import { Fragment } from "react";
 
-export default function Test() {
-	// const apps = useGET("/v2/apps", fetch42)
-	// const	hgicquel = use42("/v2/users?filter[login]=hgicquel")
-	// const	brmasser = use42("/v2/users?filter[login]=brmasser")
-	// const	abfall = use42("/v2/users?filter[login]=abfall")
-	// const	cvidon = use42("/v2/users?filter[login]=cvidon")
-	// const	lkhamlac = use42("/v2/users?filter[login]=lkhamlac")
-	// const	vpiamias = use42("/v2/users?filter[login]=vpiamias")
-	// const str = JSON.stringify(hgicquel)
-	// console.log(str)
+const logins = [
+	"hgicquel",
+	"brmasser",
+	"abfall",
+	"cvidon",
+	"lkhamlac",
+	"vpiamias"
+]
 
-	const	libft = use42("/v2/projects_users?filter[id]=50")
-	// &filter[id]=a_value,another_value
+interface Profile {
+	id: number,
+	login: string,
+	first_name: string,
+	last_name: string
+}
 
-	// &filter[id]=a_value,another_value
-	// filter[id]=a_value,another_value
-	// const str = JSON.stringify(libft)
-	console.log(libft)
-	// filter[id]=a_value,another_value
-	// const	users = use42<Profile[]>(`/v2/users?filter[login]=${logins.join(',')}`)
+function _Profile(props: {
+	index: number,
+	profile: Profile
+}) {
+	const { index, profile } = props
 
-	// console.log(exp.find(o => o.login === 'vpiamias'))
+	return <Link href={`/user/${profile.login}`} passHref>
+		<a className="flex border border-contrast rounded-xl mb-2 hover:border-black">
+			<div className="p-4 text-5xl font-bold text-center w-20">
+				{index+1}
+			</div>
+			<div className="border-r border-contrast"/>
+			<div className="p-4 flex">
+				<img className="w-12 h-12 rounded-full mr-4"
+					src={avatars[profile.login]} />
+				<div>
+					<div>{profile.login}</div>
+					<div className="text-contrast">
+						{profile.first_name} {profile.last_name}
+					</div>
+				</div>
+			</div>
+		</a>
+	</Link>
+}
 
-	return <div className="p-4 h-full">
-		{JSON.stringify(libft)}
-	</div>
+export default function Home() {
+	const	users = use42<Profile[]>(`/v2/users?filter[login]=${logins.join(',')}`)
+
+	return (<>
+		{users?.map((user, i) =>
+			<Fragment key={user.id}>
+				<_Profile 
+					index={i}
+					profile={user} />
+			</Fragment>)}
+	</>)
 }
