@@ -48,6 +48,8 @@ function _Profile(props: {
 	</Link>
 }
 
+
+
 export default function Home() {
 	const	users = use42<Profile[]>(`/v2/users?filter[login]=${logins.join(',')}`)
 

@@ -90,18 +90,18 @@ function _App({ Component, pageProps }: AppProps) {
 					<div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto md:block md:w-auto">
 						<div className="flex text-sm lg:flex-grow space-x-4 md:space-x-8 md:mt-0 md:text-sm md:font-medium">
 							<Link href="/" passHref>
-								<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200  active:text-indigo-600 hover:text-white">
+								<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200   hover:text-white">
 									Ecole 42
 								</a>
 							</Link>
 							{/* <Link href={`/test`} passHref */}
 							<Link href= "/epitech" passHref>
-								<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200  active:text-indigo-600 hover:text-white"> 
+								<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200   hover:text-white"> 
 									Epitech
 								</a>
 							</Link>
 							<Link href= "/sciencespo" passHref>
-								<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200  active:text-indigo-600 hover:text-white">
+								<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200   hover:text-white">
 									SciencesPo
 								</a>
 							</Link>	
@@ -133,6 +133,8 @@ function _App({ Component, pageProps }: AppProps) {
 		</div>
 	)
 }
+
+
 
 export default function MyApp(props: AppProps) {
 
