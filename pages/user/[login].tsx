@@ -1,9 +1,20 @@
-import type { NextPage } from "next"
+import { useRouter } from "next/router"
 
-const Profile: NextPage = () => {
+function _Page(props: {
+	login: string
+}) {
+	const { login } = props
+
 	return (<>
-		Page de profil
+		Page de profil de {login}
 	</>)
 }
 
-export default Profile
+export default function Profile() {
+  const router = useRouter()
+	const { login } = router.query
+	
+	if (typeof login !== "string")
+		return null
+	return <_Page login={login} />
+}
