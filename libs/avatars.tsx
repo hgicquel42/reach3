@@ -1,4 +1,4 @@
-export const avatars = {
+export const avatars: Record<string, string> = {
   "hgicquel": "https://ipfs.io/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ",
   "vpiamias": "https://ipfs.io/ipfs/QmYxT4LnK8sqLupjbS6eRvu1si7Ly2wFQAqFebxhWntcf6",
   "brmasser": "https://ipfs.io/ipfs/QmSR1aCRtn6cGrJaWNog586943N8BgfrXLKzAavCfjSuzE",

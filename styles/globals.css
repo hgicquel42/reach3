@@ -3,14 +3,10 @@
 @tailwind utilities;
 
 @import "background.css";
+@import "text.css";
 
 html,
 body,
 #__next {
   height: 100%;
-}
-
-button,
-input {
-  outline: none;
 }
