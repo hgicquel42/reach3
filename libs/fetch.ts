@@ -1,3 +1,8 @@
+const API_UID =
+  "c9888ee65a7ef8c94d998465ea37c602ae5ff8281dacc42b9dc6f35d26185bc0";
+const API_SECRET =
+  "6967697a927fb6b29a658c321458b657d6dbd7e27012f7b670a7453e3e19a37d";
+
 async function httperr(res: Response) {
   return Error(`${res.status} ${await res.text()}`);
 }
