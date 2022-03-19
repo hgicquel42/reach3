@@ -1,6 +1,8 @@
 import { avatars } from "libs/avatars";
 import { use42 } from "libs/fetch";
 import { useRouter } from "next/router";
+import React from 'react';
+
 interface Profile {
 	id: number,
 	login: string,
@@ -13,6 +15,25 @@ interface Project {
 	grade: number
 }
 
+function _Progress(props: {
+	width: number,
+	percent: number
+}) {
+	const { percent, width } = props
+	const progress = (percent / 100) * width;
+
+	const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    setValue(percent * width);
+  });
+
+	return (
+		<div className={`progress-div`} style={{ width: progress }}>
+			<div className={`progress`} style={{ width: progress }}/>
+		</div>
+	)
+}
 
 function _Header(props: {
 	profile: Profile
@@ -29,12 +50,10 @@ function _Header(props: {
 				<div className="text-contrast text-black font-sans font-bold text-2xl text-center">
 					{profile.first_name} {profile.last_name}				
 
-					<div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-					<div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" > 9.33%</div>
-					</div>
+					<_Progress width={200} percent={42} />
 
 					<div className=" rounded-md inline-block align-middle mb-10" role="group">
-						<button type="button" className="py-2 px-4 absolute   right-0 w-32 font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
+						<button type="button" className="py-2 px-4 absolute right-12 w-32 font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
 						<svg
 						className="w-6 h-6 text-blue-500"
 						xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +63,7 @@ function _Header(props: {
 								></path>
 						</svg>
 					</button>
-					<button type="button" className="py-2 px-4 absolute  right-8 w-32  font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
+					<button type="button" className="py-2 px-4 absolute  right-0 w-32  font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
 					<svg
 					className="w-6 h-6 text-blue-500 fill-current"
 					xmlns="http://www.w3.org/2000/svg"
@@ -105,18 +124,25 @@ function _Projects(props: {
         <p className="text-base font-normal text-gray-500 dark:text-gray-400">Binary tree and a lot of coffee</p>
     </li>
 </ol>
-	
-
-
-
 	<div className="border border-contrast rounded-xl mb-2 text-center space-y-2 object-scale-down">
+
 		<_Project project={{name: "minishell", grade: 100}} />
 		<_Project project={{name: "philo", grade: 100}} />
-	</div>
 
+
+	</div>
 	
 	</>
 }
+function _Footer(props: {
+	profile: Profile
+}) {
+	const { profile } = props
+
+	return <h3 className="flex absolute font-bold text-sm dark:text-black">Powered by StartOn</h3>
+}
+
+
 
 function _Page(props: {
 	login: string
@@ -132,6 +158,8 @@ function _Page(props: {
 	return <>
 		<_Header profile={profile} />
 		<_Projects profile={profile} />
+		<_Footer profile={profile} />
+
 	</>
 }
 

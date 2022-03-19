@@ -1,7 +1,6 @@
 import { avatars } from "libs/avatars";
 import { use42 } from "libs/fetch";
 import Link from "next/link";
-import { Fragment } from "react";
 
 // TODO:: quand on clique sur epitech et scien po page vide
 // TODO :: cacher logo linkedin et github sur page classement
@@ -47,6 +46,9 @@ function _Profile(props: {
 		</a>
 	</Link>
 }
+
+const	test = use42("/v2/users?filter[login]=vpiamias")
+console.log(test);
 
 export default function Home() {
 	const	users = use42<Profile[]>(`/v2/users?filter[login]=${logins.join(',')}`)
