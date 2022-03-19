@@ -1,3 +1,4 @@
+import { Fetch42Provider } from 'libs/fetch'
 import type { AppProps } from 'next/app'
 import Image from 'next/image'
 import { ChangeEvent, useCallback, useState } from 'react'
@@ -59,7 +60,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 						onChange={updateSearch}	/>
 				</div>
 			</div>
-      <Component {...pageProps} />
+			<Fetch42Provider>
+      	<Component {...pageProps} />
+			</Fetch42Provider>
 		</div>
 	)
 }
