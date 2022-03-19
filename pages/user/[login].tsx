@@ -15,34 +15,34 @@ interface Project {
 	grade: number
 }
 
-function _Progress(props: {
-	width: number,
-	percent: number
-}) {
-	const { percent, width } = props
-	const progress = (percent / 100) * width;
+// function _Progress(props: {
+// 	width: number,
+// 	percent: number
+// }) {
+// 	const { percent, width } = props
+// 	const progress = (percent / 100) * width;
 
-	const [value, setValue] = React.useState(0);
+// 	const [value, setValue] = React.useState(0);
 
-  React.useEffect(() => {
-    setValue(percent * width);
-  });
+//   React.useEffect(() => {
+//     setValue(percent * width);
+//   });
 
-	return (
-		<div className={`progress-div`} style={{ width: progress }}>
-			<div className={`progress`} style={{ width: progress }}/>
-		</div>
-	)
-}
+// 	return (
+// 		<div className={`progress-div` } style={{ width: progress }}>
+// 			<div className={`progress`} style={{ width: progress }}/>
+// 		</div>
+// 	)
+// }
 
 function _Header(props: {
 	profile: Profile
 }) {
 	const { profile } = props
 
-	return <header className="flex border border-contrast rounded-xl  mb-2">
-		<div className="p-4 flex grow">
-			<img className="w-28 h-28 rounded-full mx-8"
+	return <header className="flex border border-contrast rounded-xl mb-0 ">
+		<div className="p-4 flex flex-row">
+			<img className="w-28 h-28 rounded-full mt-6 ml-2 "
 				src={avatars[profile.login]} />
 			
 				<div className= " py-8 ">
@@ -50,22 +50,25 @@ function _Header(props: {
 				<div className="text-contrast text-black font-sans font-bold text-2xl text-center">
 					{profile.first_name} {profile.last_name}				
 
-					<_Progress width={200} percent={42} />
+					{/* <_Progress width={200} percent={84} /> */}
+					<div className="w-full bg-gray-800 rounded-full ml-6 dark:bg-gray-700">
+    		<div className="bg-dark-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full width: 45%"> 45%</div>
+  				</div>
 
-					<div className=" rounded-md inline-block align-middle mb-10" role="group">
-						<button type="button" className="py-2 px-4 absolute right-12 w-32 font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
+					<div className=" rounded-md " >
+						<button type="button" className="  font-medium  ml-[300px]  focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
 						<svg
-						className="w-6 h-6 text-blue-500"
+						className="w-8 h-8 text-blue-500"
 						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 448 512">
+						viewBox="0 0 448 512"> 
 								<path
 									d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
 								></path>
 						</svg>
-					</button>
-					<button type="button" className="py-2 px-4 absolute  right-0 w-32  font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
+					</button> 
+					<button type="button" className="py-2 px-4  w-32  mr-[80px] font-medium  focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
 					<svg
-					className="w-6 h-6 text-blue-500 fill-current"
+					className="w-8 h-8 text-blue-500 fill-current"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24">
 					<path
@@ -97,9 +100,9 @@ function _Projects(props: {
 	// ...
 
 	return <>
-	<ol className="relative border-l border-gray-200 dark:border-gray-700">                  
-    <li className="mb-10 ml-6">            
-        <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+	<ol className="relative border-l mt-6 border-gray-200 dark:border-gray-700">                  
+    <li className="mb-10 ml-10">            
+        <span className="flex absolute -left-2 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
             <svg className="w-3 h-3 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path></svg>
         </span>
         <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-black">Minishell <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">Latest</span></h3>
@@ -108,7 +111,7 @@ function _Projects(props: {
         <a href="" className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><svg className="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clipRule="evenodd"></path></svg> NFT Link or smth</a>
     </li>
     <li className="mb-10 ml-6">
-        <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+        <span className="flex absolute -left-2 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
             <svg className="w-3 h-3 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path></svg>
         </span>
         <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-black">Philosophers</h3>
@@ -116,7 +119,7 @@ function _Projects(props: {
         <p className="text-base font-normal text-gray-500 dark:text-gray-400">P_thread, mutex and data races to make your life brighter</p>
     </li>
     <li className="mb-10 ml-6">
-        <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+        <span className="flex absolute -left-2 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
             <svg className="w-3 h-3 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path></svg>
         </span>
         <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-black">Ft_containers</h3>
@@ -126,8 +129,8 @@ function _Projects(props: {
 </ol>
 	<div className="border border-contrast rounded-xl mb-2 text-center space-y-2 object-scale-down">
 
-		<_Project project={{name: "minishell", grade: 100}} />
-		<_Project project={{name: "philo", grade: 100}} />
+		{/* <_Project project={{name: "minishell", grade: 100}} />
+		<_Project project={{name: "philo", grade: 100}} /> */}
 
 
 	</div>
@@ -139,7 +142,13 @@ function _Footer(props: {
 }) {
 	const { profile } = props
 
-	return <h3 className="flex absolute font-bold text-sm dark:text-black">Powered by StartOn</h3>
+	return < h3 classname="flex absolute font-bold text-sm dark:text-black">
+		<p> Powered by StartOn</p>
+	<div className="w-30 h-30"/>
+		<div>
+			<img src="public/assets/starton.jpeg"  />
+		</div>
+	</h3>
 }
 
 
