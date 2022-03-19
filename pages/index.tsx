@@ -1,37 +1,6 @@
-import type { NextPage } from "next"
-import { ChangeEvent, useCallback, useState } from "react"
-import { use42, use42Token } from "../libs/fetch"
-import { useGET } from "../libs/react/fetch"
 
-const Home: NextPage = () => {
-	const [search, setSearch] = useState<string>()
-
-	const updateSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		setSearch(e.target.value)
-	}, [])
-
-	const token = use42Token()
-	const fetch42 = use42(token)
-
-	const apps = useGET("/v2/apps", fetch42)
-
-	return (
-		<div className="p-4 h-full">
-			<div className="h-32" />
-			<div className="w-full max-w-xl m-auto">
-				<h1 className="text-8xl m-auto font-bold">
-					Cursus3.io
-				</h1>
-				<div className="my-2" />
-				<div className="w-full">
-					<input className="w-full bg-contrast rounded-xl p-4"
-						placeholder="Rechercher un profil"
-						value={search}
-						onChange={updateSearch}	/>
-				</div>
-			</div>
-		</div>
-	)
+export default function Home() {
+	return (<>
+		Classement
+	</>)
 }
-
-export default Home

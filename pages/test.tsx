@@ -1,7 +1,4 @@
-import type { NextPage } from "next"
 
-const Test: NextPage = () => {
+export default function Test() {
 	return <div className="p-4 h-full"></div>
 }
-
-export default Test
