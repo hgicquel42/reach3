@@ -11,7 +11,10 @@ export default async function handler(
 	const { authorization } = req.headers
 	const headers = JSON.parse(JSON.stringify({ authorization }))
 	const res2 = await fetch(url, { method: req.method, headers })
-	console.log(url, headers)
 
-	res.status(res2.status).json(await res2.json())
+	const text = await res2.text()
+	console.log("decors", url, text)
+	const json = JSON.parse(text)
+
+	res.status(res2.status).json(json)
 }

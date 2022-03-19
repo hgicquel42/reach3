@@ -1,22 +1,37 @@
 import { Fetch42Provider } from 'libs/fetch'
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
-import { ChangeEvent, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [search, setSearch] = useState<string>()
+declare global {
+	interface Window {
+		ethereum: any
+	}
+}
 
-	const updateSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		setSearch(e.target.value)
-  }, [])
+export default function MyApp({ Component, pageProps }: AppProps) {
+	const [account, setAccount] = useState<string>()
+
+	const connect = useCallback(async () => {
+		const { ethereum } = window
+		if (!ethereum) return 
+		const accounts = ethereum.request({ method: 'eth_requestAccounts' });
+		setAccount(accounts[0])
+	}, [])
+
+	const mint = useCallback(() => {
+		if (!account) return
+		// TODO
+	}, [account])
   
   return (
 		<div className="p-4 h-full">
 			<div className="h-32" />
-			<header className="w-full max-w-xl m-auto">
+			<div className="p-4 rounded-xl bg-white w-full max-w-4xl m-auto">
+			<header className="">
 				<Link href="/" passHref>
-					<a className="text-8xl m-auto font-bold">
+					<a className="text-8xl m-auto font-sans font-bold">
 						Cursus3.io
 					</a>
 				</Link>
@@ -40,27 +55,30 @@ function MyApp({ Component, pageProps }: AppProps) {
 								</a>
 							</Link>
 						</div>
-						<button className="grow inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-							Se connecter
+						{account
+						? <button className="grow inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+							onClick={mint}>
+							Ajouter un projet
 						</button>
+						: <button className="grow inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+							onClick={connect}>
+							Se connecter
+						</button>}
 					</div>
 				</nav>
 				<div className="my-2" />
 				<nav className="w-full bg-contrast rounded-xl p-4">
 					<input className="w-full bg-transparent outline-none"
-						placeholder="Rechercher un profil"
-						value={search}
-						onChange={updateSearch}	/>
+						placeholder="Rechercher un profil"/>
 				</nav>
 			</header>
 			<div className="my-4" />
-			<article className="w-full max-w-4xl m-auto">
+			<article className="">
 				<Fetch42Provider>
 					<Component {...pageProps} />
 				</Fetch42Provider>
 			</article>
+			</div>
 		</div>
 	)
 }
-
-export default MyApp

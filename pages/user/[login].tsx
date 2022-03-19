@@ -9,23 +9,57 @@ interface Profile {
 	last_name: string
 }
 
-function _Profile(props: {
+interface Project {
+	name: string
+	grade: number
+}
+
+
+function _Header(props: {
 	profile: Profile
 }) {
 	const { profile } = props
 
-	return <a className="flex border border-contrast rounded-xl mb-2">
-		<div className="p-4 flex">
-			<img className="w-12 h-12 rounded-full mr-4"
+	return <header className="flex border border-contrast rounded-xl  mb-2">
+		<div className="p-4 flex grow">
+			<img className="w-28 h-28 rounded-full mx-8"
 				src={avatars[profile.login]} />
-			<div>
-				<div>{profile.login}</div>
-				<div className="text-contrast">
+				<div className="grow"/>
+				<div className= " py-8 ">
+				<div className="text-right text-lg text-white">{profile.login}</div>
+				<div className="text-contrast text-white font-sans font-bold text-2xl text-center">
 					{profile.first_name} {profile.last_name}
 				</div>
 			</div>
 		</div>
-	</a>
+	</header>
+}
+
+function _Project(props: {
+	project: Project
+}) {
+	const { project } = props
+
+	return <>
+		<div>
+			{project.name}
+		</div>
+	</>
+}
+
+function _Projects(props: {
+	profile: Profile
+}) {
+	// ...
+
+	return <>
+	<div className="border border-contrast rounded-xl mb-2 text-center space-y-2">
+		<_Project project={{name: "minishell", grade: 100}} />
+		<_Project project={{name: "philo", grade: 100}} />
+	</div>
+
+	
+	</>
 }
 
 function _Page(props: {
@@ -39,7 +73,10 @@ function _Page(props: {
 	if (!profile)
 		return <>Loading...</>
 
-	return <_Profile profile={profile} />
+	return <>
+		<_Header profile={profile} />
+		<_Projects profile={profile} />
+	</>
 }
 
 export default function Profile() {

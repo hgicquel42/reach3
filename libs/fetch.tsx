@@ -22,7 +22,7 @@ export function useGET<T>(url: string, fetcher: Fetcher<T>) {
 	}, [url, fetcher])
 
 	useEffect(() => {
-		fetch()
+		fetch().catch(console.error)
 	}, [fetch])
 
 	return state

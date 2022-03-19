@@ -26,7 +26,7 @@ function _Profile(props: {
 	const { index, profile } = props
 
 	return <Link href={`/user/${profile.login}`} passHref>
-		<a className="flex border border-contrast rounded-xl mb-2">
+		<a className="flex border border-contrast rounded-xl mb-2 hover:border-black">
 			<div className="p-4 text-5xl font-bold text-center w-20">
 				{index+1}
 			</div>

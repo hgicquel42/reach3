@@ -8,5 +8,11 @@
 html,
 body,
 #__next {
-  height: 100%;
+
+}
+
+body{
+  @apply bg-no-repeat;
+  background: rgba(0, 0, 255, 0.5);
+  
 }
