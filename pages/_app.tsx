@@ -1,8 +1,6 @@
 import { Fetch42Provider } from 'libs/fetch'
 import type { AppProps } from 'next/app'
-import Image from 'next/image'
 import { ChangeEvent, useCallback, useState } from 'react'
-import logo from "../public/assets/fusee.png"
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -22,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 				<nav className="flex items-center justify-between flex-wrap bg-blue-800 p-6">
 					<div className="flex items-center flex-shrink-0 text-white mr-6">
-						<Image src={logo} width="100" height="50" />
+						{/* <Image src={logo} width="100" height="50" /> */}
 
 						<span className="font-semibold text-xl tracking-tight">
 							Chad3.io

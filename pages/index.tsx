@@ -1,6 +1,3 @@
-import Image from "next/image";
-import icon from "../public/assets/boredape.png";
-import flag from "../public/assets/flag.png";
 
 
 export default function Home() {
@@ -22,7 +19,7 @@ export default function Home() {
 							<tr id="cvidon">
 								<td>1</td>
 								<td>
-									<Image src={icon} width="50" height="50" />
+									{/* <Image src={icon} width="50" height="50" /> */}
 								</td>
 								<td> cvidon </td>
 								<td> 9.7% </td>
@@ -34,13 +31,13 @@ export default function Home() {
 									</a>{" "}
 								</td>
 								<td>
-									<Image src={flag} width="50" height="35" />
+									{/* <Image src={flag} width="50" height="35" /> */}
 								</td>
 							</tr>
 							<tr id="cvidon">
 								<td>1</td>
 								<td>
-									<Image src={icon} width="50" height="50" />
+									{/* <Image src={icon} width="50" height="50" /> */}
 								</td>
 								<td> cvidon </td>
 								<td> 9.7% </td>
@@ -52,13 +49,13 @@ export default function Home() {
 									</a>{" "}
 								</td>
 								<td>
-									<Image src={flag} width="50" height="35" />
+									{/* <Image src={flag} width="50" height="35" /> */}
 								</td>
 							</tr>
 							<tr id="cvidon">
 								<td>1</td>
 								<td>
-									<Image src={icon} width="50" height="50" />
+									{/* <Image src={icon} width="50" height="50" /> */}
 								</td>
 								<td> cvidon </td>
 								<td> 9.7% </td>
@@ -70,13 +67,13 @@ export default function Home() {
 									</a>{" "}
 								</td>
 								<td>
-									<Image src={flag} width="50" height="35" />
+									{/* <Image src={flag} width="50" height="35" /> */}
 								</td>
 							</tr>
 							<tr id="brmasser">
 								<td>2</td>
 								<td>
-									<Image src={icon} width="50" height="50" />
+									{/* <Image src={icon} width="50" height="50" /> */}
 								</td>
 								<td> brmasser </td>
 								<td> 8.7% </td>
@@ -88,7 +85,7 @@ export default function Home() {
 									</a>{" "}
 								</td>
 								<td>
-									<Image src={flag} width="50" height="35" />
+									{/* <Image src={flag} width="50" height="35" /> */}
 								</td>
 							</tr>
 						</tbody>
