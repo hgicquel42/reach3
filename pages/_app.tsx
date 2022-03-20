@@ -89,26 +89,27 @@ function _App({ Component, pageProps }: AppProps) {
 			<div className="p-4 rounded-xl bg-white w-full max-w-4xl m-auto">
 				<header className="">
 					<Link href="/" passHref>
-						<a className="block text-7xl w-full text-center font-sans font-bold"
-						img src="https://logo-marque.com/wp-content/uploads/2020/04/Twitter-Logo.png">
+						<a className="flex items-center text-7xl w-full text-center font-sans font-bold">
+							<img className="h-16 w-16 rounded-full"
+							src="https://o.remove.bg/downloads/c00c03fe-4e88-4845-a6fa-fb8631e41712/Sans_titre-removebg-preview.png" />
 							vocation3
 						</a>
 					</Link>
 					<div className="my-2" />
 					<nav className="flex items-center bg-[#4169E1] p-4 rounded-xl">
 						<Link href="/" passHref>
-							<a className="block text-teal-200 hover:text-white mr-4">
+							<a className="block text-white hover:text-teal-900 mr-4">
 								Ecole 42
 							</a>
 						</Link>
 						{/* <Link href={`/test`} passHref */}
 						<Link href= "/epitech" passHref>
-							<a className="block text-teal-200 hover:text-white mr-4"> 
+							<a className="block text-white hover:text-teal-900 mr-4"> 
 								Epitech
 							</a>
 						</Link>
 						<Link href= "/sciencespo" passHref>
-							<a className="block text-teal-200 hover:text-white mr-4">
+							<a className="block text-white hover:text-teal-900 mr-4">
 								SciencesPo
 							</a>
 						</Link>	
