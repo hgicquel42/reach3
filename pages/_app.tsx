@@ -45,7 +45,7 @@ async function _mint(hash: string){
 		"speed": "low",
 		"params": [
 				'0xA08377760EcD517D7c2DD63D4Db1Cb7A54bC3215',
-				'11116', 
+				'11117', 
 				hash 
 		]
 	}, { headers })
