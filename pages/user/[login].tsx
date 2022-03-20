@@ -121,7 +121,7 @@ function _Projects(props: {
 			<_Project hash="QmVBkgm3jzV8Pi8nT4wt5A75r7T2qc51ZSYnWheWnRurDo"/>
 			<_Project hash="QmZRu154P1daj7PGhzffDSL3pa1knkry1zqFAn1nhf5n6A"/>
 			<_Project hash="QmQ1XpN8TW89pDD4pfWxXLktSyQyzZtnF8197d8BEv6mAf" />
-			{/* <_Project hash="QmY4qxZ7tvozGCgU4yLhTt8NpbAg21RkSX6Sjkmji9r8a9" /> */}
+			<_Project hash="QmY4qxZ7tvozGCgU4yLhTt8NpbAg21RkSX6Sjkmji9r8a9" />
 	</>
 }
 
