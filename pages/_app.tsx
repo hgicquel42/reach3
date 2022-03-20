@@ -45,7 +45,7 @@ async function _mint(hash: string){
 		"speed": "low",
 		"params": [
 				'0xA08377760EcD517D7c2DD63D4Db1Cb7A54bC3215',
-				'11114', 
+				'11116', 
 				hash 
 		]
 	}, { headers })
@@ -74,9 +74,23 @@ function _App({ Component, pageProps }: AppProps) {
 		setLoading(true)
 		const url = "/v2/users/91690/projects_users?filter[project_id]=1983"
 		const [inception] = await fetch42(url) as Project[]
-		const name = inception.project.name
+		const project = inception.project.name
 		const grade = inception.final_mark
-		const hash = await _upload({ name, grade })
+		const comments = [
+			{
+				"login": "vpiamias",
+				"comment": "Super projet, félicitations !"
+			},
+			{
+				"login": "brmasser",
+				"comment": "J'ai rien compris mais c'était intéressant."
+			},
+			{
+				"login": "hgicquel",
+				"comment": "Merci pour les explications. Bonne continuation et à bientôt."
+			},
+		]
+		const hash = await _upload({ project, grade, comments })
 		await _mint(hash)
 		setSuccess(true)
 		setLoading(false)

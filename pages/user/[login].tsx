@@ -25,7 +25,7 @@ const descriptions: Record<string, string> = {
 	"minishell": "As beautiful as shell.",
 	"philosophers": "I never thought philosophy would be so deadly.",
 	"ft_containers": "C++ containers, easy mode.",
-	"inception": "This project aims to broaden your knowledge of system administration by using Docker."
+	"Inception": "This project aims to broaden your knowledge of system administration by using Docker."
 }
 
 function _Header(props: {
@@ -100,7 +100,7 @@ function _Project(props: {
 				{descriptions[project.project]}
 			</div>
 			<div className="my-2" />
-			{project.comments.map(comment => <>
+			{project.comments?.map(comment => <>
 				<div>
 					<span className="font-medium mr-2">
 						{comment.login}:
@@ -121,6 +121,7 @@ function _Projects(props: {
 			<_Project hash="QmVBkgm3jzV8Pi8nT4wt5A75r7T2qc51ZSYnWheWnRurDo"/>
 			<_Project hash="QmZRu154P1daj7PGhzffDSL3pa1knkry1zqFAn1nhf5n6A"/>
 			<_Project hash="QmQ1XpN8TW89pDD4pfWxXLktSyQyzZtnF8197d8BEv6mAf" />
+			<_Project hash="QmY4qxZ7tvozGCgU4yLhTt8NpbAg21RkSX6Sjkmji9r8a9" />
 	</>
 }
 
