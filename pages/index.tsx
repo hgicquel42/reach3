@@ -50,8 +50,10 @@ function _Profile(props: {
 export default function Home() {
 	const	users = use42<Profile[]>(`/v2/users?filter[login]=${logins.join(',')}`)
 
+	if (!users)
+		return <>Chargement...</>
 	return (<>
-		{users?.map((user, i) =>
+		{users.map((user, i) =>
 			<Fragment key={user.id}>
 				<_Profile 
 					index={i}

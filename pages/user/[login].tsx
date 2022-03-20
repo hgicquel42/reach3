@@ -134,8 +134,7 @@ function _Page(props: {
 	const profile = users?.[0]
 
 	if (!profile)
-		return <>Loading...</>
-
+		return <>Chargement...</>
 	return <>
 		<_Header profile={profile} />
 		<div className="my-8" />
