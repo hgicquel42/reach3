@@ -36,16 +36,16 @@ async function _upload(content: any) {
 }
 
 async function _mint(hash: string){
-	const url = "https://api.starton.io/smart-contract/binance-testnet/0x91B89cC0680a67e7e6787F12F0BC075f39553989/call"
+	const url = "https://api.starton.io/v2/smart-contract/binance-testnet/0x91B89cC0680a67e7e6787F12F0BC075f39553989/call"
 	const headers = {"x-api-key": 'AMNc51KYHNSBdWjLAtUV7AnXN0q4XWNR' }
 
-	axios.post(url, {
+	await axios.post(url, {
 		"functionName": 'mintChad',
 		"signerWallet": '0x925dFc2555Cb249519484352577c034011D57efA',
 		"speed": "low",
 		"params": [
 				'0xA08377760EcD517D7c2DD63D4Db1Cb7A54bC3215',
-				'12345', 
+				'11112', 
 				hash 
 		]
 	}, { headers })
@@ -59,6 +59,7 @@ interface Project {
 function _App({ Component, pageProps }: AppProps) {
 	const fetch42 = useContext(Fetch42Context)!
 	const [account, setAccount] = useState<string>()
+	const [loading, setLoading] = useState(false)
 	const [success, setSuccess] = useState(false)
 
 	const connect = useCallback(async () => {
@@ -70,6 +71,7 @@ function _App({ Component, pageProps }: AppProps) {
 
 	const mint = useCallback(async () => {
 		if (!account || !fetch42) return
+		setLoading(true)
 		const url = "/v2/users/91690/projects_users?filter[project_id]=1983"
 		const [inception] = await fetch42(url) as Project[]
 		const name = inception.project.name
@@ -77,6 +79,7 @@ function _App({ Component, pageProps }: AppProps) {
 		const hash = await _upload({ name, grade })
 		await _mint(hash)
 		setSuccess(true)
+		setLoading(false)
 	}, [account, fetch42])
 
   return (
@@ -87,7 +90,7 @@ function _App({ Component, pageProps }: AppProps) {
 					<Link href="/" passHref>
 						<a className="flex items-center text-7xl w-full text-center font-sans font-bold">
 							<img className="h-16 w-16 rounded-full"
-							src="https://o.remove.bg/downloads/c00c03fe-4e88-4845-a6fa-fb8631e41712/Sans_titre-removebg-preview.png" />
+							src="https://ipfs.io/ipfs/QmcEQxaXMwS8MAs8idabaUKyWnPrA7XfXVJo1my5rUDywp" />
 							reach3
 						</a>
 					</Link>
@@ -98,7 +101,6 @@ function _App({ Component, pageProps }: AppProps) {
 								Ecole 42
 							</a>
 						</Link>
-						{/* <Link href={`/test`} passHref */}
 						<Link href= "/epitech" passHref>
 							<a className="block text-white hover:text-teal-900 mr-4"> 
 								Epitech
@@ -113,7 +115,9 @@ function _App({ Component, pageProps }: AppProps) {
 						{account
 							? <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
 								onClick={mint}>
-								Ajouter un projet
+								{loading
+								? <>En attente...</>
+								: <>Ajouter un projet</>}
 							</button>
 							: <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
 								onClick={connect}>
@@ -126,6 +130,10 @@ function _App({ Component, pageProps }: AppProps) {
 							placeholder="Rechercher un profil"/>
 					</nav>
 				</header>
+				{success &&
+					<div className="bg-green-500 p-4 rounded-xl text-white mt-2">
+						{`🚀 La transaction est en cours de validation`}
+					</div>}
 				<div className="my-4" />
 				<article className="">
 					<Component {...pageProps} />
