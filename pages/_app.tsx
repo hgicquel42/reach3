@@ -76,21 +76,7 @@ function _App({ Component, pageProps }: AppProps) {
 		const [inception] = await fetch42(url) as Project[]
 		const project = inception.project.name
 		const grade = inception.final_mark
-		const comments = [
-			{
-				"login": "vpiamias",
-				"comment": "Super projet, félicitations !"
-			},
-			{
-				"login": "brmasser",
-				"comment": "J'ai rien compris mais c'était intéressant."
-			},
-			{
-				"login": "hgicquel",
-				"comment": "Merci pour les explications. Bonne continuation et à bientôt."
-			},
-		]
-		const hash = await _upload({ project, grade, comments })
+		const hash = await _upload({ project, grade })
 		await _mint(hash)
 		setSuccess(true)
 		setLoading(false)
