@@ -36,7 +36,7 @@ async function _upload(content: any) {
 }
 
 async function _mint(hash: string){
-	const url = "https://api.starton.io/v2/smart-contract/polygon-mumbai/0x7E1A7b29a2CB8af9A0639bD4801A91d5aCb20755/call"
+	const url = "https://api.starton.io/smart-contract/binance-testnet/0x91B89cC0680a67e7e6787F12F0BC075f39553989/call"
 	const headers = {"x-api-key": 'AMNc51KYHNSBdWjLAtUV7AnXN0q4XWNR' }
 
 	axios.post(url, {
@@ -88,7 +88,7 @@ function _App({ Component, pageProps }: AppProps) {
 						<a className="flex items-center text-7xl w-full text-center font-sans font-bold">
 							<img className="h-16 w-16 rounded-full"
 							src="https://o.remove.bg/downloads/c00c03fe-4e88-4845-a6fa-fb8631e41712/Sans_titre-removebg-preview.png" />
-							vocation3
+							reach3
 						</a>
 					</Link>
 					<div className="my-2" />
@@ -130,7 +130,6 @@ function _App({ Component, pageProps }: AppProps) {
 				<article className="">
 					<Component {...pageProps} />
 				</article>
-				<div className="w-full border-b border-contrast" />
 				<div className="flex bg-contrast p-6 rounded-xl text-sm">
 					<a className="hover:underline"
 					href="https://www.starton.io/"
