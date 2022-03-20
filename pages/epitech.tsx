@@ -6,7 +6,7 @@ import { Fragment } from "react";
 // TODO :: cacher logo linkedin et github sur page classement
 
 const logins = [
-	"Coming soon",
+	"vpiamias",
 ]
 
 interface Profile {
@@ -24,9 +24,7 @@ function _Profile(props: {
 
 return <Link href={`/user/${profile.login}`} passHref>
 		<a className="text-4xl">
-			{/* <div className="p-1 flex"> */}
 				Epitech is coming soon...
-			{/* </div> */}
 		</a>
 	</Link>
 }
