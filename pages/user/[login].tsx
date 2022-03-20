@@ -21,16 +21,11 @@ interface Comment {
 	comment: string
 }
 
-const projects = [
-	"QmVBkgm3jzV8Pi8nT4wt5A75r7T2qc51ZSYnWheWnRurDo",
-	"QmZRu154P1daj7PGhzffDSL3pa1knkry1zqFAn1nhf5n6A",
-	"QmQ1XpN8TW89pDD4pfWxXLktSyQyzZtnF8197d8BEv6mAf"
-]
-
 const descriptions: Record<string, string> = {
 	"minishell": "As beautiful as shell.",
 	"philosophers": "I never thought philosophy would be so deadly.",
-	"ft_containers": "C++ containers, easy mode."
+	"ft_containers": "C++ containers, easy mode.",
+	"inception": "This project aims to broaden your knowledge of system administration by using Docker."
 }
 
 function _Header(props: {
@@ -86,35 +81,42 @@ function _Project(props: {
 
 	if (!project)
 		return null
-	return <div className="p-4 border border-contrast rounded-xl hover:border-black mb-2">
-		<div className="flex items-center">
-			<h3 className="inline text-xl font-bold mr-2">
-				{project.project}
-			</h3>
-			<span className="py-1 px-2 bg-green-500 rounded-full text-sm text-contrast">
-				{project.grade}/100
+	return <>
+		<div className="relative p-4 border-l border-contrast">
+			<span className="absolute -translate-y-6 -translate-x-8 w-6 h-6 flex justify-center items-center bg-blue-100 rounded-full ring-8 ring-white">
+				<svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path>
+				</svg>
 			</span>
-		</div>
-		<div className="text-contrast">
-			{descriptions[project.project]}
-		</div>
-		{project.comments.map(comment => <>
-			<div>
-				<span className="font-medium mr-2">
-					{comment.login}:
-				</span>
-				<span className="text-contrast">
-					{comment.comment}
+			<div className="flex items-center">
+				<h3 className="inline text-xl font-bold mr-2">
+					{project.project}
+				</h3>
+				<span className="py-1 px-2 bg-green-500 rounded-full text-sm text-contrast">
+					{project.grade}/100
 				</span>
 			</div>
-		</>)}
-	</div>
+			<div className="text-contrast">
+				{descriptions[project.project]}
+			</div>
+			<div className="my-2" />
+			{project.comments.map(comment => <>
+				<div>
+					<span className="font-medium mr-2">
+						{comment.login}:
+					</span>
+					<span className="text-contrast">
+						{comment.comment}
+					</span>
+				</div>
+			</>)}
+		</div>
+	</>
 }
 
 function _Projects(props: {
 	profile: Profile
 }) {
-
 	return <>
 			<_Project hash="QmVBkgm3jzV8Pi8nT4wt5A75r7T2qc51ZSYnWheWnRurDo"/>
 			<_Project hash="QmZRu154P1daj7PGhzffDSL3pa1knkry1zqFAn1nhf5n6A"/>
@@ -135,8 +137,9 @@ function _Page(props: {
 
 	return <>
 		<_Header profile={profile} />
-		<div className="my-2" />
+		<div className="my-8" />
 		<_Projects profile={profile} />
+		<div className="my-8"/>
 	</>
 }
 
