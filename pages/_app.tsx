@@ -89,9 +89,8 @@ function _App({ Component, pageProps }: AppProps) {
 			<div className="p-4 rounded-xl bg-white w-full max-w-4xl m-auto">
 				<header className="">
 					<Link href="/" passHref>
-						<a className="text-7xl text-center font-sans font-bold">
-							<img src="public/assets/vocation.png" alt=""/>
-							Vocation 3.0
+						<a className="block text-7xl w-full text-center font-sans font-bold">
+							vocation3
 						</a>
 					</Link>
 					<div className="my-2" />
