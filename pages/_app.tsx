@@ -11,10 +11,6 @@ declare global {
 	}
 }
 
-async function lastID() {
-	// TODO
-}
-
 async function _upload(content: any) {
 	const url = "https://api.starton.io/v2/pinning/content/json"
 	const headers = { "x-api-key": 'AMNc51KYHNSBdWjLAtUV7AnXN0q4XWNR' }
@@ -48,9 +44,9 @@ async function _mint(hash: string){
 		"signerWallet": '0x925dFc2555Cb249519484352577c034011D57efA',
 		"speed": "low",
 		"params": [
-				'0xA08377760EcD517D7c2DD63D4Db1Cb7A54bC3215', // address 0x0000000000000000000000000000000000000000
-				'12345', // uint256 42
-				hash // string 'my hash'
+				'0xA08377760EcD517D7c2DD63D4Db1Cb7A54bC3215',
+				'12345', 
+				hash 
 		]
 	}, { headers })
 }

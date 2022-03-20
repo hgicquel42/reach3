@@ -3,9 +3,6 @@ import { use42 } from "libs/fetch";
 import Link from "next/link";
 import { Fragment } from "react";
 
-// TODO:: quand on clique sur epitech et scien po page vide
-// TODO :: cacher logo linkedin et github sur page classement
-
 const logins = [
 	"hgicquel",
 	"brmasser",
