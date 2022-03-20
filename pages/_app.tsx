@@ -89,7 +89,8 @@ function _App({ Component, pageProps }: AppProps) {
 			<div className="p-4 rounded-xl bg-white w-full max-w-4xl m-auto">
 				<header className="">
 					<Link href="/" passHref>
-						<a className="block text-7xl w-full text-center font-sans font-bold">
+						<a className="block text-7xl w-full text-center font-sans font-bold"
+						img src="https://logo-marque.com/wp-content/uploads/2020/04/Twitter-Logo.png">
 							vocation3
 						</a>
 					</Link>
